@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Starting OB1 Milestone 2.0 Dev Environment..."
+echo "Starting OpenBazaar daemon 2.0..."
+echo "Starting OpenBazaar client 2.0..."
+trap 'kill %1' SIGINT
+cd $HOME/go/src/github.com/OpenBazaar/openbazaar-go
+go run openbazaard.go start &
+cd $HOME/obd
+npm start 
+echo "Shutting down OpenBazaar client 2.0..."
+echo "Shutting down OpenBazaar daemon 2.0..."
+echo "Closing OB1 Milestone 2.0 Dev Environment..."
+echo "Done."
+trap SIGINT
+
